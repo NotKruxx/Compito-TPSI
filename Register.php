@@ -13,7 +13,7 @@
         <a class="nav-link active" aria-current="page" href="#">Crea un nuovo account</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Login.php">Login</a>
+        <a class="nav-link" href="login.php">Login</a>
     </ul>
         <center>
             <h1>Crea un account</h1>
