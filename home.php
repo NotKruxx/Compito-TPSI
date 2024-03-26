@@ -18,7 +18,6 @@
                         <h4 class="alert-heading">Attenzione!</h4>
                         <p>Non hai effettuato il login, verrai reindirizzato alla pagina di login tra 5 secondi.</p>
                         <hr>
-                        <p class="mb-0">You successfully read this important alert message.</p>
                       </div>';
                 header("refresh:5;url=login.php");
                 exit;
@@ -29,9 +28,8 @@
                         <h4 class="alert-heading">Ben fatto!</h4>
                         <p>Benvenuto ' . $_SESSION['nome'] . '</p>
                         <hr>
-                        <p class="mb-0">You successfully read this important alert message.</p>
+                        <p class="mb-0">Ti sei registrato correttamente al sito! </p>
                       </div>';
-                      //Stampa le informazioni della sessione e del cookie 
                 echo '<div class="alert alert-info" role="alert">
                         <h4 class="alert-heading">Informazioni sessione e cookie</h4>
                         <p>Sessione: ' . session_id() . '</p>';

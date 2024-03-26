@@ -52,11 +52,13 @@
     session_start(); 
 
     if ($_COOKIE && isset($_COOKIE['nome'])) {
-        echo "<div class='container'>";
-        echo "<div class='alert alert-warning' role='alert'>
-        In precedenza hai salvato le credenziali attraverso i cookie, verrai reindirizzato alla home tra 5 secondi
-        </div>";
-        echo "</div>";
+        echo '<br>';
+        echo '<div class="container">';
+        echo '<div class="alert alert-warning" role="alert">';
+        echo '<h4 class="alert-heading">Login Automatico!</h4>';
+        echo '<p>In precedenza hai salvato le credenziali attraverso i cookie, verrai reindirizzato alla home tra 5 secondi</p>';
+        echo '</div>';
+        echo '</div>';
         $_SESSION['nome'] = $_COOKIE['nome'];
 
         //https://www.w3docs.com/snippets/php/php-auto-refreshing-page.html
@@ -86,24 +88,33 @@
 
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
-                    echo "<br>";
-                    echo "<div class='container'>";
-                    echo "<div class='alert alert-danger' role='alert'>L'email è già presente nel database, riprova con un altra email tra 5 secondi</div>";
-                    echo "</div>";
-                    header("refresh:5;url=register.php");
+                    if ($result->num_rows > 0) {
+                        echo '<br>';
+                        echo '<div class="container">';
+                        echo '<div class="alert alert-danger" role="alert">';
+                        echo '<h4 class="alert-heading">Errore!</h4>';
+                        echo '<div class="alert alert-danger" role="alert">L\'email è già presente nel database, riprova con un\'altra email tra 5 secondi</div>';
+                        echo '</div>';
+                        echo '</div>';
+                        header("refresh:5;url=register.php");
+                        exit;
+                    }
                     exit;
                 }
 
                 $sql = "INSERT INTO Utenti (nome, email, password) VALUES ('$nome', '$email', '$password1_hash')";
                 if ($conn->query($sql) === TRUE) {
-                    echo "New record created successfully";
+                    echo "<br>";
                 } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
                 }
-                echo "<br>";
-                echo "<div class='container'>";
-                echo "<div class='alert alert-success' role='alert'>Le password coincidono, verrai reindirizzato alla home tra 5 secondi</div>";
-                echo "</div>";
+                echo '<br>';
+                echo '<div class="container">';
+                echo '<h4 class="alert-heading">Registrazione effettuata con successo!</h4>';
+                echo '<div class="alert alert-success" role="alert">';
+                echo 'Le password coincidono, verrai reindirizzato alla home tra 5 secondi';
+                echo '</div>';
+                echo '</div>';
                 if ($ricordati) {
                     setcookie("nome", $nome, time() + 3600, "/");
                 }
@@ -113,6 +124,8 @@
             } else {
                 echo "<br>";
                 echo "<div class='container'>";
+                echo "<div class='alert alert-danger' role='alert'>";
+                echo "<h4 class='alert-heading'>Errore!</h4>";
                 echo "<div class='alert alert-danger' role='alert'>Le password non coincidono, riprova tra 5 secondi</div>";
                 echo "</div>";
                 header("refresh:5;url=register.php");

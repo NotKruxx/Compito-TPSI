@@ -42,10 +42,13 @@ session_start();
 
 if ($_COOKIE && isset($_COOKIE['nome'])) {
     $_SESSION['nome'] = $_COOKIE['nome'];
-    echo "<br>";
-    echo "<div class='container'>";
-    echo "<div class='alert alert-warning' role='alert'>In precedenza hai salvato le credenziali attraverso i cookie, verrai reindirizzato alla home tra 5 secondi</div>";
-    echo "</div>";
+    echo '<br>';
+    echo '<div class="container">';
+    echo '<div class="alert alert-warning" role="alert">';
+    echo '<h4 class="alert-heading">Login Automatico!</h4>';
+    echo '<p>In precedenza hai salvato le credenziali attraverso i cookie, verrai reindirizzato alla home tra 5 secondi</p>';
+    echo '</div>';
+    echo '</div>';
     header("refresh:5;url=home.php");
     exit;
 }
@@ -69,16 +72,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($ricordati == 1) {
                 setcookie("nome", $row['nome'], time() + 3600, "/");
             }
-            echo "<br>";
-            echo "<div class='container'>";
-            echo "<div class='alert alert-success' role='alert'>Login effettuato con successo, verrai reindirizzato alla home tra 5 secondi</div>";
-            echo "</div>";
+            echo '<br>';
+            echo '<div class="container">';
+            echo '<div class="alert alert-success" role="alert">';
+            echo '<h4 class="alert-heading">Login effettuato con successo!</h4>';
+            echo '<p>Verrai reindirizzato alla home tra 5 secondi</p>';
+            echo '</div>';
+            echo '</div>';
             header("refresh:5;url=home.php");
             exit;
         } else {
             echo "<br>";
             echo "<div class='container'>";
-            echo "<div class='alert alert-danger' role='alert'>Email o password errate, riprova tra 5 secondi</div>";
+            echo "<div class='alert alert-danger' role='alert'>";
+            echo "<h4 class='alert-heading'>Credenziali errate!</h4>";
+            echo "<p>Riprova tra 5 secondi</p>";
             echo "</div>";
             header("refresh:5;url=login.php");
             exit;
