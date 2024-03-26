@@ -93,7 +93,7 @@
                         echo '<div class="container">';
                         echo '<div class="alert alert-danger" role="alert">';
                         echo '<h4 class="alert-heading">Errore!</h4>';
-                        echo '<div class="alert alert-danger" role="alert">L\'email è già presente nel database, riprova con un\'altra email tra 5 secondi</div>';
+                        echo '<p>L\'email è già presente nel database, riprova con un\'altra email tra 5 secondi</p>';
                         echo '</div>';
                         echo '</div>';
                         header("refresh:5;url=register.php");
@@ -111,9 +111,7 @@
                 echo '<br>';
                 echo '<div class="container">';
                 echo '<h4 class="alert-heading">Registrazione effettuata con successo!</h4>';
-                echo '<div class="alert alert-success" role="alert">';
-                echo 'Le password coincidono, verrai reindirizzato alla home tra 5 secondi';
-                echo '</div>';
+                echo '<p>Verrai reindirizzato alla home tra 5 secondi</p>';
                 echo '</div>';
                 if ($ricordati) {
                     setcookie("nome", $nome, time() + 3600, "/");
@@ -126,7 +124,7 @@
                 echo "<div class='container'>";
                 echo "<div class='alert alert-danger' role='alert'>";
                 echo "<h4 class='alert-heading'>Errore!</h4>";
-                echo "<div class='alert alert-danger' role='alert'>Le password non coincidono, riprova tra 5 secondi</div>";
+                echo "<p>Le password non corrispondono, riprova tra 5 secondi</p>";
                 echo "</div>";
                 header("refresh:5;url=register.php");
                 exit;
